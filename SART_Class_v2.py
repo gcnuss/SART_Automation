@@ -110,7 +110,7 @@ class SART(object):
     def nxt_ht_assigns(self, results_df, rnd, person_info=['Surname', 'First_name', 'Time']):
         '''define inputs, how function works'''
         for ht1, ht2 in self.h_pairs:
-            if ht1 < (rnd * 100 + 100):
+            if ht1 < (rnd * 100 + 100) and ht1 > ((rnd - 1) * 100 + 100):
                 temp_df1 = results_df[(results_df['Heat'] == ht1)].sort_values('Time')
                 temp_df1.reset_index(drop=True, inplace=True)
                 temp_df2 = results_df[(results_df['Heat'] == ht2)].sort_values('Time')
@@ -138,7 +138,7 @@ class SART(object):
             df = self.bracket_df[self.bracket_df['Nxt_Heat'] == 'Heat {}'.format(heat)].sort_values('Time')
             info_list.append('Heat {}'.format(heat))
             info_list.append('\n')
-            info_list.append(df[['First_name', 'Surname']])
+            info_list.append(df[['First_name', 'Surname', 'Nxt_Heat_Time']])
             info_list.append('\n')
 
         return info_list
@@ -150,7 +150,7 @@ class SART(object):
         bracket_df_temp = self.bracket_df[(pd.notnull(self.bracket_df['Surname'])) & (self.bracket_df['Round'] == prior_rnd)]
 
         if len(ss_input) != len(bracket_df_temp):
-            return 'Warning: mismatch between next round import file and current round results lists - check data!'
+            return 'Warning: mismatch between next round import file and current round results lists - check data! ss_input length is {} and bracket_df_temp length is {}'.format(len(ss_input), len(bracket_df_temp))
         else:
             for val in ss_input.index:
                 ss_input.loc[val, ['Long']] = bracket_df_temp[
