@@ -93,7 +93,22 @@ class SART(object):
         self.tt_df_cleaned = self.tt_df_cleaned.sort_values(['Time'])
         self.tt_df_cleaned['Seed'] = [int(i)+1 for i in self.tt_df_cleaned.index]
 
+    def _check_TT_for_ties(self):
+        unique_len = len(set(self.tt_df_cleaned['Time']))
+        original_len = len(self.tt_df_cleaned)
+
+        if unique_len != original_len:
+            return 'Warning: Ties exist - diff in list length is {}.  Fix before proceeding.'.format((original_len - unique_len))
+        else:
+            return 'No Ties, results added to bracket!'
+
     def add_time_trial_results(self):
+        tie_status = self._check_TT_for_ties()
+        print (tie_status)
+
+        if tie_status != 'No Ties, results added to bracket!':
+            return
+
         for val in self.tt_df_cleaned['Seed']:
             self.bracket_df.loc[val,['First_name']] = (self.tt_df_cleaned['First_name'][self.tt_df_cleaned['Seed'] == val].item())
             self.bracket_df.loc[val,['Surname']] = (self.tt_df_cleaned['Surname'][self.tt_df_cleaned['Seed'] == val].item())
@@ -107,6 +122,16 @@ class SART(object):
         df = df.sort_values(['Time'])
         return df
 
+    def _check_heats_for_ties(self, temp_df1, temp_df2, ht1, ht2):
+        temp_df = pd.concat([temp_df1, temp_df2])
+        unique_len = len(set(temp_df['Time']))
+        original_len = len(temp_df)
+
+        if unique_len != original_len:
+            return 'Warning: Ties exist in Heat Pair {},{}.  Must fix before proceeding.'.format(ht1, ht2)
+        else:
+            return 'No Ties, proceeding with next heat assignments!'
+
     def nxt_ht_assigns(self, results_df, rnd, person_info=['Surname', 'First_name', 'Time']):
         '''define inputs, how function works'''
         for ht1, ht2 in self.h_pairs:
@@ -115,6 +140,12 @@ class SART(object):
                 temp_df1.reset_index(drop=True, inplace=True)
                 temp_df2 = results_df[(results_df['Heat'] == ht2)].sort_values('Time')
                 temp_df2.reset_index(drop=True, inplace=True)
+
+                tie_status = self._check_heats_for_ties(temp_df1, temp_df2, ht1, ht2)
+                print (tie_status)
+
+                if tie_status != 'No Ties, proceeding with next heat assignments!':
+                    break
 
                 for colnm in person_info:
                     ht_win1 = temp_df1[colnm][temp_df1['Time'] == temp_df1['Time'].min()].item()
@@ -164,3 +195,31 @@ class SART(object):
                 ss_input.loc[val, ['Cl. no.']] = ss_input.loc[val, ['Long']].values[0][-3:]
 
             return ss_input
+
+    def _check_finals_for_ties(self, r5_results):
+
+        for heat in xrange(501, 517):
+            if len(set(r5_results[r5_results['Heat']==heat]['Time'])) == len(r5_results[r5_results['Heat']==heat]):
+                return 'No ties, proceeding with print out'
+            else:
+                return 'Ties exist in Heat {}.  Fix before proceeding!'.format(heat)
+
+    def print_final_results(self, r5_results):
+        info_list = []
+
+        tie_status = self._check_finals_for_ties(r5_results)
+        print (tie_status)
+
+        if tie_status == 'No ties, proceeding with print out':
+            pass
+        else:
+            return
+
+        for heat in xrange(516, 500, -1):
+            df = r5_results[r5_results['Heat'] == heat]
+            info_list.append('Heat {}'.format(heat))
+            info_list.append('\n')
+            info_list.append(df[['First_name', 'Surname', 'Time']])
+            info_list.append('\n')
+
+        return info_list
