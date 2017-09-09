@@ -177,7 +177,6 @@ class SART(object):
     def assign_nxt_ht_to_ss_import_csv(self, csv_imp_file, prior_rnd):
         ss_input = pd.read_csv(csv_imp_file)
         ss_input = ss_input[pd.notnull(ss_input['Surname'])]
-        ss_input = ss_input[ss_input['Surname'] != 'Winterbottom']
         bracket_df_temp = self.bracket_df[(pd.notnull(self.bracket_df['Surname'])) & (self.bracket_df['Round'] == prior_rnd)]
 
         if len(ss_input) != len(bracket_df_temp):
