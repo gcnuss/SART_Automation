@@ -67,7 +67,7 @@ Seed
 105/106-Q5      Emily          Ross        3:15pm
 105/106-Q6       Oleg   Slyusarchuk        3:15pm
 105/106-Q7       Kate         Byers        3:15pm
-105/106-Q8   Courtney        Cutler        3:15pm
+105/106-Q8     Hayden       Ratliff        3:15pm
 
 
 Heat 207
@@ -124,10 +124,10 @@ Heat 211
            First_name    Surname Nxt_Heat_Time
 Seed                                          
 W112            Julia    Doubson        3:30pm
+W111           Thomas     Laraia        3:30pm
 111/112-Q1       Nina  Potrebich        3:30pm
 111/112-Q2      Brett   Buchholz        3:30pm
-W111            Ethan   O'Connor        3:30pm
-111/112-Q3     Annika     Mihata        3:30pm
+111/112-Q3      Ethan   O'Connor        3:30pm
 
 
 Heat 212
@@ -135,10 +135,10 @@ Heat 212
 
            First_name   Surname Nxt_Heat_Time
 Seed                                         
-111/112-Q4     Joshua  Colleran        3:33pm
-111/112-Q5      Laura  Collings        3:33pm
-111/112-Q6       Jill    Klinge        3:33pm
-111/112-Q7     Thomas    Laraia        3:33pm
+111/112-Q4     Annika    Mihata        3:33pm
+111/112-Q5     Joshua  Colleran        3:33pm
+111/112-Q6      Laura  Collings        3:33pm
+111/112-Q7       Jill    Klinge        3:33pm
 111/112-Q8      Jared   Hopkins        3:33pm
 
 
@@ -163,7 +163,7 @@ Seed
 113/114-Q5    Shannon     Cheng        3:39pm
 113/114-Q6    Jessica  Colleran        3:39pm
 113/114-Q7     Kristy     Ricks        3:39pm
-113/114-Q8     Hayden   Ratliff        3:39pm
+113/114-Q8   Courtney    Cutler        3:39pm
 
 
 Heat 215

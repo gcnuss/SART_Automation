@@ -1,0 +1,192 @@
+Heat 301
+
+
+           First_name   Surname Nxt_Heat_Time
+Seed                                         
+214/216-Q4    Jessica  Colleran        8:00pm
+214/216-Q5      Nancy    Devine        8:00pm
+214/216-Q6     Larson  Buchholz        8:00pm
+214/216-Q7     Kristy     Ricks        8:00pm
+214/216-Q8   Courtney    Cutler        8:00pm
+
+
+Heat 302
+
+
+           First_name   Surname Nxt_Heat_Time
+Seed                                         
+210/212-Q4      Jared   Hopkins        8:03pm
+210/212-Q5       Jill    Klinge        8:03pm
+210/212-Q6    Lillian    Bakker        8:03pm
+210/212-Q7        Bob  Forgrave        8:03pm
+210/212-Q8        Ben     Smith        8:03pm
+
+
+Heat 303
+
+
+           First_name     Surname Nxt_Heat_Time
+Seed                                           
+206/208-Q4     Linnea      Nasman        8:06pm
+206/208-Q5       Kirk      Devine        8:06pm
+206/208-Q6       Kate       Byers        8:06pm
+206/208-Q7        Don  Haliburton        8:06pm
+206/208-Q8     Hayden     Ratliff        8:06pm
+
+
+Heat 304
+
+
+           First_name      Surname Nxt_Heat_Time
+Seed                                            
+202/204-Q4      Jonah   Haliburton        8:09pm
+202/204-Q5        Jud       Kelley        8:09pm
+202/204-Q6    Brandon          Lee        8:09pm
+202/204-Q7   Vladimir  Gusiatnikov        8:09pm
+202/204-Q8       Kyle      Hopkins        8:09pm
+
+
+Heat 305
+
+
+           First_name Surname Nxt_Heat_Time
+Seed                                       
+W216             Stan   Woods        8:12pm
+W214            Janne   Maeki        8:12pm
+214/216-Q1       Reid  Howard        8:12pm
+214/216-Q2    Shannon   Cheng        8:12pm
+214/216-Q3   Benjamin   Brady        8:12pm
+
+
+Heat 306
+
+
+           First_name     Surname Nxt_Heat_Time
+Seed                                           
+W210           Joanne       Woods        8:15pm
+W212           Joshua    Colleran        8:15pm
+210/212-Q1      Laura    Collings        8:15pm
+210/212-Q2     Annika      Mihata        8:15pm
+210/212-Q3        Tim  Waterhouse        8:15pm
+
+
+Heat 307
+
+
+           First_name       Surname Nxt_Heat_Time
+Seed                                             
+W208             Abra        McNair        8:18pm
+W206             Kyle  Haddad-Fonda        8:18pm
+206/208-Q1      Emily          Ross        8:18pm
+206/208-Q2       Kate         Knapp        8:18pm
+206/208-Q3       Oleg   Slyusarchuk        8:18pm
+
+
+Heat 308
+
+
+           First_name   Surname Nxt_Heat_Time
+Seed                                         
+W204          Rebecca    Jensen        8:21pm
+202/204-Q1        Ing     Uhlin        8:21pm
+W202           Sherri     Brady        8:21pm
+202/204-Q2    Stephen     Tarry        8:21pm
+202/204-Q3    Matthew  Ferguson        8:21pm
+
+
+Heat 309
+
+
+           First_name         Surname Nxt_Heat_Time
+Seed                                               
+213/215-Q4      Peter           Golde        8:24pm
+213/215-Q5      Chris          Lawson        8:24pm
+213/215-Q6      Julie         Cassata        8:24pm
+213/215-Q7        Tom      Herrnstein        8:24pm
+213/215-Q8      Bruce  Christopherson        8:24pm
+
+
+Heat 310
+
+
+            First_name    Surname Nxt_Heat_Time
+Seed                                           
+209/211-Q4  Anastasiya   Gordeeva        8:27pm
+209/211-Q5        Nina  Potrebich        8:27pm
+209/211-Q6       Ethan   O'Connor        8:27pm
+209/211-Q7     Cameron     Devine        8:27pm
+209/211-Q8        Rick   Breseman        8:27pm
+
+
+Heat 311
+
+
+            First_name    Surname Nxt_Heat_Time
+Seed                                           
+205/207-Q4       Scott  Sheldrake        8:30pm
+205/207-Q5      Andrew      Mason        8:30pm
+205/207-Q6       Tomas     Vaisar        8:30pm
+205/207-Q7  Christophe   Delepine        8:30pm
+205/207-Q8        Ryan   Breseman        8:30pm
+
+
+Heat 312
+
+
+           First_name    Surname Nxt_Heat_Time
+Seed                                          
+201/203-Q4      Kevin     Mihata        8:33pm
+201/203-Q5        Pia      Blake        8:33pm
+201/203-Q6     Robert       Long        8:33pm
+201/203-Q7     Rachel  Caulfield        8:33pm
+201/203-Q8      David     Vaisar        8:33pm
+
+
+Heat 313
+
+
+           First_name         Surname Nxt_Heat_Time
+Seed                                               
+W215             Adam           Woods        8:36pm
+W213              Ian        Collings        8:36pm
+213/215-Q1       Siri  Christopherson        8:36pm
+213/215-Q2       Emma        Sherwood        8:36pm
+213/215-Q3      Susan       Grandjean        8:36pm
+
+
+Heat 314
+
+
+           First_name   Surname Nxt_Heat_Time
+Seed                                         
+W211           Thomas    Laraia        8:39pm
+W209          Peteris    Ledins        8:39pm
+209/211-Q1      Julia   Doubson        8:39pm
+209/211-Q2        Kai    Mihata        8:39pm
+209/211-Q3      Brett  Buchholz        8:39pm
+
+
+Heat 315
+
+
+           First_name Surname Nxt_Heat_Time
+Seed                                       
+W207           Graeme  Rennie        8:42pm
+205/207-Q1       Tori  Borish        8:42pm
+205/207-Q2       Eric    Bone        8:42pm
+W205             Eric   Jones        8:42pm
+205/207-Q3        Ott  Toomet        8:42pm
+
+
+Heat 316
+
+
+           First_name     Surname Nxt_Heat_Time
+Seed                                           
+W201             Will       Enger        8:45pm
+W203            David      Bakker        8:45pm
+201/203-Q1       Mark       Prior        8:45pm
+201/203-Q2      Carlo  Giacometti        8:45pm
+201/203-Q3      Brian      Gruber        8:45pm
+
+
