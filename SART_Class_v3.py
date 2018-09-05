@@ -211,6 +211,27 @@ class SART(object):
             ht1 = ht_pair1[0]
             ht2 = ht_pair1[1]
             if ht1 < (rnd * 100 + 100) and ht1 > ((rnd - 1) * 100 + 100) and (ht1 in self.six_person_heats_R4 or ht2 in self.six_person_heats_R4):
+                print('Processing Heat Pair {}, {} for R4 to R5 Unique Heats'.format(ht1,ht2))
+                temp_df1 = results_df[(results_df['Heat'] == ht1)].sort_values('Time')
+                temp_df1.reset_index(drop=True, inplace=True)
+                #temp_df2 = results_df[(results_df['Heat'] == ht2)].sort_values('Time')
+                #temp_df2.reset_index(drop=True, inplace=True)
+
+                #tie_status = self._check_heats_for_ties(temp_df1, temp_df2, ht1, ht2)
+                #print (tie_status)
+
+                #if tie_status != 'No Ties, proceeding with next heat assignments!':
+                #    break
+
+                #temp_dftot = pd.concat([temp_df1, temp_df2]).sort_values('Time')
+                #temp_dftot.reset_index(drop=True, inplace=True)
+
+                for i, row in enumerate(temp_df1.values):
+                    for j, colnm in enumerate(person_info):
+                        self.bracket_df.loc['{}-Q{}'.format(ht1, i+1),[colnm]] = row[j]
+
+            elif ht1 < (rnd * 100 + 100) and ht1 > ((rnd - 1) * 100 + 100):
+                print('Processing Heat Pair {}, {} per Normal Function'.format(ht1,ht2))
                 temp_df1 = results_df[(results_df['Heat'] == ht1)].sort_values('Time')
                 temp_df1.reset_index(drop=True, inplace=True)
                 temp_df2 = results_df[(results_df['Heat'] == ht2)].sort_values('Time')
@@ -222,14 +243,20 @@ class SART(object):
                 if tie_status != 'No Ties, proceeding with next heat assignments!':
                     break
 
+                for colnm in person_info:
+                    ht_win1 = temp_df1[colnm][temp_df1['Time'] == temp_df1['Time'].min()].item()
+                    self.bracket_df.loc['W{}'.format(ht1),[colnm]] = ht_win1
+                    ht_win2 = temp_df2[colnm][temp_df2['Time'] == temp_df2['Time'].min()].item()
+                    self.bracket_df.loc['W{}'.format(ht2),[colnm]] = ht_win2
+
+                temp_df1.drop(0, inplace=True)
+                temp_df2.drop(0, inplace=True)
                 temp_dftot = pd.concat([temp_df1, temp_df2]).sort_values('Time')
                 temp_dftot.reset_index(drop=True, inplace=True)
 
                 for i, row in enumerate(temp_dftot.values):
                     for j, colnm in enumerate(person_info):
-                        self.bracket_df.loc['{}-Q{}'.format(ht1, i+1),[colnm]] = row[j]
-            else:
-                self.nxt_ht_assigns(results_df, rnd, person_info=['Surname', 'First_name', 'Time'])
+                        self.bracket_df.loc['{}/{}-Q{}'.format(ht1, ht2, i+1),[colnm]] = row[j]
 
 
     def print_heat_assigns(self, rnd):
