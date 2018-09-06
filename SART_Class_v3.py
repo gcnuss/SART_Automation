@@ -2,6 +2,7 @@ from __future__ import print_function
 import pandas as pd
 import numpy as np
 from collections import defaultdict
+from datetime import datetime
 
 
 class SART(object):
@@ -293,17 +294,24 @@ class SART(object):
 
             return ss_input
 
-    def _calc_final_combo_score(self, r4_results, r5_results, heat):
+    def _calc_final_combo_score(self, r4_results, r5_results):
 
-        df = r5_results[(r5_results['Heat'] == heat)]['First_name', 'Surname', 'Time']
+        time_zero = datetime.strptime('00:00:00', '%H:%M:%S')
 
-        df['SumTime'] = df[['First_name', 'Surname', 'Time']].apply(
-                        lambda row: row[2] + r4_results[(r4_results['First_name'] == row[0]) &
-                                                        (r4_results['Surname'] == row[1])]['Time'].values[0], axis=1)
+        r5_results['SumTime'] = r5_results[['First_name', 'Surname', 'Time', 'Heat']].apply(
+                        lambda row: (datetime.strptime(row[2],'%H:%M:%S')
+                        - time_zero
+                        + datetime.strptime(r4_results[(r4_results['First_name'] == row[0]) &
+                        (r4_results['Surname'] == row[1])]['Time'].values[0], '%H:%M:%S')).time().strftime("%H:%M:%S") if row[3] in [508, 506, 504, 502] else None, axis=1)
 
-        df.sort_values('SumTime')
+        r5_results['Time_Official'] = r5_results[['Time', 'SumTime']].apply(
+                            lambda row: row[1] if row[1] > 0 else row[0], axis=1)
 
-        return df
+        r5_results.sort_values(by=['Heat', 'Time_Official'], ascending=[False, True], inplace=True)
+        r5_results.reset_index(inplace=True, drop=True)
+        r5_results.index += 1
+
+        return r5_results
 
     def _check_finals_for_ties(self, r5_results):
 
@@ -324,11 +332,13 @@ class SART(object):
         else:
             return
 
+        r5_results = self._calc_final_combo_score(r4_results, r5_results)
+
         for heat in xrange(516, 500, -1):
             if heat in [507, 505, 503, 501]:
                 pass
             elif heat in [508, 506, 504, 502]:
-                df = self._calc_final_combo_score(r4_results, r5_results, heat)
+                df = r5_results[r5_results['Heat'] == heat]
                 info_list.append('Heat {}'.format(heat))
                 info_list.append('\n')
                 info_list.append(df[['First_name', 'Surname', 'SumTime']])
