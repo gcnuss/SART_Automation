@@ -1,0 +1,127 @@
+Heat 516
+
+
+  First_name Surname      Time
+1       Will   Enger  00:14:06
+2     Graeme  Rennie  00:14:09
+3       Adam   Woods  00:14:30
+4    Peteris  Ledins  00:15:39
+
+
+Heat 515
+
+
+  First_name   Surname      Time
+5        Kai    Mihata  00:16:28
+6        Ben     Smith  00:17:10
+7        Ian  Collings  mp
+7       Eric     Jones  mp
+
+
+Heat 514
+
+
+   First_name       Surname      Time
+9         Rex  Winterbottom  00:17:57
+10      Ethan      O'Connor  00:18:24
+11        Ott        Toomet  00:18:58
+12    Nikolay        Nachev  00:20:26
+
+
+Heat 513
+
+
+    First_name         Surname      Time
+13       Bruce  Christopherson  00:18:45
+14  Anastasiya        Gordeeva  00:19:55
+15         Tom      Herrnstein  00:21:57
+16       David          Vaisar  00:26:28
+
+
+Heat 512
+
+
+   First_name      Surname      Time
+17   Vladimir  Gusiatnikov  00:19:13
+18     Andrew        Mason  00:20:09
+19       Abra       McNair  00:21:20
+20      Kevin       Mihata  00:23:09
+
+
+Heat 511
+
+
+   First_name       Surname      Time
+21      Peter         Golde  00:20:12
+22      Chris        Lawson  00:21:21
+23     Daniel  Castelluccio  00:25:22
+24       Stan         Woods  mp
+
+
+Heat 510
+
+
+   First_name   Surname      Time
+25      Tomas    Vaisar  00:20:29
+26    Cameron    Devine  00:21:25
+27     Oyvind     Naess  00:21:28
+28      Brett  Buchholz  00:22:42
+
+
+Heat 509
+
+
+    First_name    Surname      Time
+29       Susan  Grandjean  00:21:55
+30     Shannon      Cheng  00:23:22
+31     Rebecca     Jensen  mp
+31  Christophe   Delepine  mp
+
+
+Heat 508
+
+
+   First_name   Surname   SumTime
+33       Ryan  Breseman  00:40:15
+34   Benjamin     Brady  00:43:22
+35     Annika    Mihata  00:43:32
+36        Ing     Uhlin  00:45:59
+37    Stephen     Tarry  00:47:50
+38  Alexander   Myachin  mp
+
+
+Heat 506
+
+
+   First_name     Surname   SumTime
+39        Tim  Waterhouse  00:47:45
+40    Marissa      Roecks  00:48:16
+41      Laura    Collings  00:51:21
+42       Kate       Knapp  00:52:27
+43      Nancy      Devine  01:00:43
+44       Kirk      Devine  01:06:24
+
+
+Heat 504
+
+
+   First_name     Surname   SumTime
+45     Linnea      Nasman  00:54:37
+46       Jill      Klinge  00:59:57
+47     Larson    Buchholz  01:03:51
+48    Prakhar  Srivastava  mp
+49       Dana    Breseman  dns
+
+Heat 502
+
+
+   First_name       Surname   SumTime
+50       Eric          Bone  00:33:52
+51       Kate  Byers-Jensen  01:05:10
+52      Terry        Farrah  01:07:40
+53   Jennifer  Castelluccio  01:12:57
+54       Olga     Shustrova  01:21:24
+55    Richard        Pleiss  mp
+56        Jud        Kelley  dns
+
+

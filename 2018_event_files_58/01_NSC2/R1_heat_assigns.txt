@@ -1,0 +1,170 @@
+Heat 101
+
+
+     First_name   Surname Nxt_Heat_Time
+Seed                                   
+1           Ian  Collings       11:15am
+32         Ryan  Breseman       11:15am
+33       Andrew     Mason       11:15am
+
+
+Heat 102
+
+
+     First_name       Surname Nxt_Heat_Time
+Seed                                       
+16        Tomas        Vaisar       11:18am
+17         Stan         Woods       11:18am
+48       Larson      Buchholz       11:18am
+49         Kate  Byers-Jensen       11:18am
+
+
+Heat 103
+
+
+     First_name       Surname Nxt_Heat_Time
+Seed                                       
+8           Ben         Smith       11:21am
+25          Tim    Waterhouse       11:21am
+40       Daniel  Castelluccio       11:21am
+57       Jessie          Chan       11:21am
+
+
+Heat 104
+
+
+     First_name Surname Nxt_Heat_Time
+Seed                                 
+9       Nikolay  Nachev       11:24am
+24        David  Vaisar       11:24am
+41         Kate   Knapp       11:24am
+56         Eric    Bone       11:24am
+
+
+Heat 105
+
+
+     First_name Surname Nxt_Heat_Time
+Seed                                 
+4          Eric   Jones       11:27am
+29       Oyvind   Naess       11:27am
+36       Annika  Mihata       11:27am
+
+
+Heat 106
+
+
+      First_name         Surname Nxt_Heat_Time
+Seed                                          
+13         Bruce  Christopherson       11:30am
+20    Anastasiya        Gordeeva       11:30am
+45         Nancy          Devine       11:30am
+52      Jennifer    Castelluccio       11:30am
+
+
+Heat 107
+
+
+     First_name    Surname Nxt_Heat_Time
+Seed                                    
+5          Adam      Woods       11:33am
+28        Susan  Grandjean       11:33am
+37      Stephen      Tarry       11:33am
+
+
+Heat 108
+
+
+      First_name     Surname Nxt_Heat_Time
+Seed                                      
+12         Chris      Lawson       11:36am
+21    Christophe    Delepine       11:36am
+44        Linnea      Nasman       11:36am
+53       Prakhar  Srivastava       11:36am
+
+
+Heat 109
+
+
+     First_name Surname Nxt_Heat_Time
+Seed                                 
+2       Peteris  Ledins       11:39am
+31      Cameron  Devine       11:39am
+34          Ing   Uhlin       11:39am
+
+
+Heat 110
+
+
+     First_name     Surname Nxt_Heat_Time
+Seed                                     
+15        Ethan    O'Connor       11:42am
+18          Tom  Herrnstein       11:42am
+47      Richard      Pleiss       11:42am
+50          Jud      Kelley       11:42am
+
+
+Heat 111
+
+
+     First_name   Surname Nxt_Heat_Time
+Seed                                   
+7           Kai    Mihata       11:45am
+26         Abra    McNair       11:45am
+39        Laura  Collings       11:45am
+58        Steve    Warner       11:45am
+
+
+Heat 112
+
+
+     First_name      Surname Nxt_Heat_Time
+Seed                                      
+10     Vladimir  Gusiatnikov       11:48am
+23        Kevin       Mihata       11:48am
+42         Dana     Breseman       11:48am
+55      Marissa       Roecks       11:48am
+
+
+Heat 113
+
+
+     First_name Surname Nxt_Heat_Time
+Seed                                 
+3          Will   Enger       11:51am
+30      Rebecca  Jensen       11:51am
+35      Shannon   Cheng       11:51am
+
+
+Heat 114
+
+
+     First_name Surname Nxt_Heat_Time
+Seed                                 
+14          Ott  Toomet       11:54am
+19     Benjamin   Brady       11:54am
+46         Kirk  Devine       11:54am
+51        Terry  Farrah       11:54am
+
+
+Heat 115
+
+
+     First_name   Surname Nxt_Heat_Time
+Seed                                   
+6        Graeme    Rennie       11:57am
+27        Brett  Buchholz       11:57am
+38    Alexander   Myachin       11:57am
+
+
+Heat 116
+
+
+     First_name       Surname Nxt_Heat_Time
+Seed                                       
+11          Rex  Winterbottom       12:00pm
+22        Peter         Golde       12:00pm
+43         Jill        Klinge       12:00pm
+54         Olga     Shustrova       12:00pm
+
+

@@ -1,0 +1,174 @@
+Heat 401
+
+
+Empty DataFrame
+Columns: [First_name, Surname, Nxt_Heat_Time]
+Index: []
+
+
+Heat 402
+
+
+            First_name       Surname Nxt_Heat_Time
+Seed                                              
+304/308-Q5        Kate  Byers-Jensen        9:18am
+304/308-Q6     Richard        Pleiss        9:18am
+304/308-Q7       Terry        Farrah        9:18am
+304/308-Q8        Olga     Shustrova        9:18am
+304/308-Q9    Jennifer  Castelluccio        9:18am
+304/308-Q10        Jud        Kelley        9:18am
+304/308-Q11       Eric          Bone        9:18am
+304/308-Q12      Steve        Warner        9:18am
+
+
+Heat 403
+
+
+Empty DataFrame
+Columns: [First_name, Surname, Nxt_Heat_Time]
+Index: []
+
+
+Heat 404
+
+
+           First_name     Surname Nxt_Heat_Time
+Seed                                           
+W304           Larson    Buchholz        9:24am
+304/308-Q1     Jessie        Chan        9:24am
+W308             Jill      Klinge        9:24am
+304/308-Q2    Prakhar  Srivastava        9:24am
+304/308-Q3     Linnea      Nasman        9:24am
+304/308-Q4       Dana    Breseman        9:24am
+
+
+Heat 405
+
+
+Empty DataFrame
+Columns: [First_name, Surname, Nxt_Heat_Time]
+Index: []
+
+
+Heat 406
+
+
+            First_name     Surname Nxt_Heat_Time
+Seed                                            
+303/307-Q5        Kate       Knapp        9:30am
+303/307-Q6     Marissa      Roecks        9:30am
+303/307-Q7       Laura    Collings        9:30am
+303/307-Q8       Nancy      Devine        9:30am
+303/307-Q9         Tim  Waterhouse        9:30am
+303/307-Q10       Kirk      Devine        9:30am
+
+
+Heat 407
+
+
+Empty DataFrame
+Columns: [First_name, Surname, Nxt_Heat_Time]
+Index: []
+
+
+Heat 408
+
+
+           First_name   Surname Nxt_Heat_Time
+Seed                                         
+W307         Benjamin     Brady        9:36am
+303/307-Q1  Alexander   Myachin        9:36am
+W303             Ryan  Breseman        9:36am
+303/307-Q2        Ing     Uhlin        9:36am
+303/307-Q3     Annika    Mihata        9:36am
+303/307-Q4    Stephen     Tarry        9:36am
+
+
+Heat 409
+
+
+           First_name   Surname Nxt_Heat_Time
+Seed                                         
+310/314-Q3    Cameron    Devine        9:39am
+310/314-Q4      Brett  Buchholz        9:39am
+310/314-Q5    Rebecca    Jensen        9:39am
+310/314-Q6    Shannon     Cheng        9:39am
+
+
+Heat 410
+
+
+            First_name    Surname Nxt_Heat_Time
+Seed                                           
+302/306-Q3       Susan  Grandjean        9:42am
+302/306-Q4  Christophe   Delepine        9:42am
+302/306-Q5       Tomas     Vaisar        9:42am
+302/306-Q6      Oyvind      Naess        9:42am
+
+
+Heat 411
+
+
+           First_name      Surname Nxt_Heat_Time
+Seed                                            
+W310         Vladimir  Gusiatnikov        9:45am
+W314            Peter        Golde        9:45am
+310/314-Q1       Abra       McNair        9:45am
+310/314-Q2      Kevin       Mihata        9:45am
+
+
+Heat 412
+
+
+           First_name       Surname Nxt_Heat_Time
+Seed                                             
+W306            Chris        Lawson        9:48am
+W302             Stan         Woods        9:48am
+302/306-Q1     Andrew         Mason        9:48am
+302/306-Q2     Daniel  Castelluccio        9:48am
+
+
+Heat 413
+
+
+           First_name       Surname Nxt_Heat_Time
+Seed                                             
+309/313-Q3      Ethan      O'Connor        9:51am
+309/313-Q4        Rex  Winterbottom        9:51am
+309/313-Q5        Ott        Toomet        9:51am
+309/313-Q6        Tom    Herrnstein        9:51am
+
+
+Heat 414
+
+
+            First_name         Surname Nxt_Heat_Time
+Seed                                                
+301/305-Q3     Nikolay          Nachev        9:54am
+301/305-Q4  Anastasiya        Gordeeva        9:54am
+301/305-Q5       Bruce  Christopherson        9:54am
+301/305-Q6       David          Vaisar        9:54am
+
+
+Heat 415
+
+
+           First_name Surname Nxt_Heat_Time
+Seed                                       
+W313           Graeme  Rennie        9:57am
+W309          Peteris  Ledins        9:57am
+309/313-Q1        Kai  Mihata        9:57am
+309/313-Q2       Will   Enger        9:57am
+
+
+Heat 416
+
+
+           First_name   Surname Nxt_Heat_Time
+Seed                                         
+W301              Ian  Collings       10:00am
+301/305-Q1        Ben     Smith       10:00am
+W305             Adam     Woods       10:00am
+301/305-Q2       Eric     Jones       10:00am
+
+

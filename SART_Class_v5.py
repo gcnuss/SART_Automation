@@ -16,15 +16,13 @@ class SART(object):
     parameters:
     r0_seeds - dict, keys are heats for round 1, values are the round 0 or
         initial seeds that will feed into each round 1 heat.
-    h_pairs - list of tuples, defines pairs of heats grouped together for calculating who
-        moves up vs. down for the next round.
-    fd_into_ht_pairs - list of tuples, defines pairs of heats grouped together that prior
-        heats feed into (i.e. a pair of heats in h_pairs will feed into a pair of heats
-        in fd_into_ht_pairs with the first element of the tuple being for the two heat
-        winners + next three fastest times, and the second element of the tuple being
-        for the remaining 5 times)
+    bef_aft_ht_pairs - list of tuples of tuples, defines pairs of heats grouped together and the prior
+        heats that feed into them, e.g. ((a,b),(c,d)) - the winners from heats a and b, and the next x fastest
+        times will move into heat c, and the rest of the people will move into heat d.
     NEXT THREE ARE CURRENTLY HARD CODED FOR: 64 person bracket, 4 people per heat,
-        and 2 heat winners + next 2 fastest times as method of advancing; will
+        and 2 heat winners + next 2 fastest times as method of advancing in top half of bracket;
+        the lower half of the bracket has some unique logic to accomodate only having 58 people
+        and combining the 8 heats in round 2 into 4 heats; will
         address this flexibility at a future time to add the following parameters:
         bracket_type - int, represents method of progressing people through rounds
         heat_size = int, number of people per heat
@@ -94,6 +92,7 @@ class SART(object):
                 self.h_seed_key['Heat {}'.format(lose_heat)].remove('{}/{}-Q{}'.format(pri_heat_pair1, pri_heat_pair2, 6))
 
     def _add_person_fiftysevenandeight(self):
+        #include a 57th and 58th person in the lower half of the bracket
         self.h_seed_key['Heat 103'].append(57)
         self.h_seed_key['Heat 204'].append('103/104-Q6')
         self.h_seed_key['Heat 304'].append('202/204-Q11')
