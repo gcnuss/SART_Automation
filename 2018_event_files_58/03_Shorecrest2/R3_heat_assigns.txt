@@ -30,7 +30,7 @@ W202             Ryan    Breseman        4:21pm
 W204             Kate       Knapp        4:21pm
 202/204-Q2    Marissa      Roecks        4:21pm
 202/204-Q3        Tim  Waterhouse        4:21pm
-202/204-Q4      Laura    Collings        4:21pm
+202/204-Q4       Dana    Breseman        4:21pm
 
 
 Heat 304
@@ -38,14 +38,14 @@ Heat 304
 
             First_name       Surname Nxt_Heat_Time
 Seed                                              
-202/204-Q5        Dana      Breseman        4:24pm
-202/204-Q6        Kate  Byers-Jensen        4:24pm
-202/204-Q7     Richard        Pleiss        4:24pm
-202/204-Q8      Larson      Buchholz        4:24pm
-202/204-Q9      Jessie          Chan        4:24pm
-202/204-Q10        Jud        Kelley        4:24pm
-202/204-Q11      Steve        Warner        4:24pm
-202/204-Q12       Eric          Bone        4:24pm
+202/204-Q5        Kate  Byers-Jensen        4:24pm
+202/204-Q6     Richard        Pleiss        4:24pm
+202/204-Q7      Larson      Buchholz        4:24pm
+202/204-Q8      Jessie          Chan        4:24pm
+202/204-Q9         Jud        Kelley        4:24pm
+202/204-Q10       Eric          Bone        4:24pm
+202/204-Q11      Laura      Collings        4:24pm
+202/204-Q12      Steve        Warner        4:24pm
 
 
 Heat 305
