@@ -19,10 +19,10 @@ class SART(object):
     bef_aft_ht_pairs - list of tuples of tuples, defines pairs of heats grouped together and the prior
         heats that feed into them, e.g. ((a,b),(c,d)) - the winners from heats a and b, and the next x fastest
         times will move into heat c, and the rest of the people will move into heat d.
-    NEXT THREE ARE CURRENTLY HARD CODED FOR: 64 person bracket, 4 people per heat,
-        and 2 heat winners + next 2 fastest times as method of advancing in top half of bracket;
-        the lower half of the bracket has some unique logic to accomodate only having 58 people
-        and combining the 8 heats in round 2 into 4 heats; will
+    NEXT THREE ARE CURRENTLY HARD CODED FOR: 80 person bracket, 5 people per heat,
+        and 2 heat winners + next 3 fastest times as method of advancing in top half of bracket;
+        the lower half of the bracket has some unique logic to accomodate only having 69-74 people
+        and combining the 4 heats in round 3 into 2 heats; will
         address this flexibility at a future time to add the following parameters:
         bracket_type - int, represents method of progressing people through rounds
         heat_size = int, number of people per heat
@@ -34,28 +34,61 @@ class SART(object):
     h_seed_key
     '''
 
-    def __init__(self, r0_seeds, bef_aft_ht_pairs, columns, start_times, six_person_heats_R2_R3=None, six_person_heats_R4=None):
+    def __init__(self, r0_seeds, bef_aft_ht_pairs, columns, start_times, combined_heats_R3=None, nine_person_heat_R4=None):
         self.r0_seeds = r0_seeds
         self.columns = columns
         self.start_times = start_times
         self.h_seed_key = defaultdict(lambda: [], self.r0_seeds)
         self.bef_aft_ht_pairs = bef_aft_ht_pairs
-        self.six_person_heats_R2_R3 = six_person_heats_R2_R3
-        self.six_person_heats_R4 = six_person_heats_R4
+        self.combined_heats_R3 = combined_heats_R3
+        self.nine_person_heat_R4 = nine_person_heat_R4
         self.sd_h_key = None
         self.bracket_df = None
         self.tt_df_cleaned = None
 
     def _define_ht_sd_keys(self, pri_heat_pair1, pri_heat_pair2, win_heat, lose_heat):
-        #move up/down calculation baked in here: two winners move up plus next 2 fastest times; remaining 4 move down
-        self.h_seed_key['Heat {}'.format(win_heat)].append('W{}'.format(pri_heat_pair1))
-        self.h_seed_key['Heat {}'.format(win_heat)].append('W{}'.format(pri_heat_pair2))
+        #altered bracket for 56 people; 32 move up as usual for a 64 person bracket; remainder move down
+        #for the 24 that move down, logic is different: heats combined in Round2 so have 6 person heats, then winners + next 4 fastest move up going forward
 
-        for i in range(1,3):
-            self.h_seed_key['Heat {}'.format(win_heat)].append('{}/{}-Q{}'.format(pri_heat_pair1, pri_heat_pair2, i))
+        #Create keys for lower half of bracket (with special grouping into a 5 person upper and 9 person lower heat)
+        if pri_heat_pair1 in self.combined_heats_R3 or pri_heat_pair2 in self.combined_heats_R3:
+            self.h_seed_key['Heat {}'.format(win_heat)].append('W{}'.format(pri_heat_pair1))
+            self.h_seed_key['Heat {}'.format(win_heat)].append('W{}'.format(pri_heat_pair2))
 
-        for i in range(3,7):
-            self.h_seed_key['Heat {}'.format(lose_heat)].append('{}/{}-Q{}'.format(pri_heat_pair1, pri_heat_pair2, i))
+            for i in range(1,4):
+                self.h_seed_key['Heat {}'.format(win_heat)].append('{}/{}-Q{}'.format(pri_heat_pair1, pri_heat_pair2, i))
+
+            for i in range(4,13):
+                self.h_seed_key['Heat {}'.format(lose_heat)].append('{}/{}-Q{}'.format(pri_heat_pair1, pri_heat_pair2, i))
+
+        #For Round 4 to 5 the same 5 and 9 will be together for both, use unique logic for this
+        elif pri_heat_pair1 in self.nine_person_heat_R4 or pri_heat_pair2 in self.nine_person_heat_R4:
+            for i in range(1,10):
+                self.h_seed_key['Heat {}'.format(win_heat)].append('{}-Q{}'.format(pri_heat_pair1, i))
+        elif pri_heat_pair1 == 404 or pri_heat_pair2 == 404:
+            for i in range(1,6):
+                self.h_seed_key['Heat {}'.format(win_heat)].append('{}-Q{}'.format(pri_heat_pair1, i))
+
+        #Create keys for upper half of bracket (normal logic for 80 person bracket, 2 winners + next 3 fastest times move up)
+        else:
+            #move up/down calculation baked in here: two winners move up plus next 3 fastest times; remaining 5 move down
+            self.h_seed_key['Heat {}'.format(win_heat)].append('W{}'.format(pri_heat_pair1))
+            self.h_seed_key['Heat {}'.format(win_heat)].append('W{}'.format(pri_heat_pair2))
+
+            for i in range(1,4):
+                self.h_seed_key['Heat {}'.format(win_heat)].append('{}/{}-Q{}'.format(pri_heat_pair1, pri_heat_pair2, i))
+
+            for i in range(4,9):
+                self.h_seed_key['Heat {}'.format(lose_heat)].append('{}/{}-Q{}'.format(pri_heat_pair1, pri_heat_pair2, i))
+
+        #Remove extras to align with 74 person bracket (drop records for person 75-80 as they'd flow thru the bracket)
+        if lose_heat in [202, 206, 208, 210, 214, 216]:
+            self.h_seed_key['Heat {}'.format(lose_heat)].remove('{}/{}-Q{}'.format(pri_heat_pair1, pri_heat_pair2, 8))
+        if lose_heat in [304, 308]:
+            self.h_seed_key['Heat {}'.format(lose_heat)].remove('{}/{}-Q{}'.format(pri_heat_pair1, pri_heat_pair2, 8))
+        if lose_heat in [308]:
+            self.h_seed_key['Heat {}'.format(lose_heat)].remove('{}/{}-Q{}'.format(pri_heat_pair1, pri_heat_pair2, 7))
+
 
     def _assign_ht_sd_keys(self):
         for pri_heats, wn_ls_heats in self.bef_aft_ht_pairs:
@@ -65,68 +98,13 @@ class SART(object):
             lose_ht = wn_ls_heats[1]
             self._define_ht_sd_keys(pri_heat1, pri_heat2, win_ht, lose_ht)
 
-    def _define_ht_sd_keys_fiftysix(self, pri_heat_pair1, pri_heat_pair2, win_heat, lose_heat):
-        #altered bracket for 56 people; 32 move up as usual for a 64 person bracket; remainder move down
-        #for the 24 that move down, logic is different: heats combined in Round2 so have 6 person heats, then winners + next 4 fastest move up going forward
-
-        #Create keys for lower half of bracket (with special grouping into 6 person heats)
-        if pri_heat_pair1 in self.six_person_heats_R2_R3 or pri_heat_pair2 in self.six_person_heats_R2_R3:
-            self.h_seed_key['Heat {}'.format(win_heat)].append('W{}'.format(pri_heat_pair1))
-            self.h_seed_key['Heat {}'.format(win_heat)].append('W{}'.format(pri_heat_pair2))
-
-            for i in range(1,5):
-                self.h_seed_key['Heat {}'.format(win_heat)].append('{}/{}-Q{}'.format(pri_heat_pair1, pri_heat_pair2, i))
-
-            for i in range(5,11):
-                self.h_seed_key['Heat {}'.format(lose_heat)].append('{}/{}-Q{}'.format(pri_heat_pair1, pri_heat_pair2, i))
-
-        #For Round 4 to 5 the same 6 will be together for both, use unique logic for this
-        elif pri_heat_pair1 in self.six_person_heats_R4 or pri_heat_pair2 in self.six_person_heats_R4:
-            for i in range(1,7):
-                self.h_seed_key['Heat {}'.format(win_heat)].append('{}-Q{}'.format(pri_heat_pair1, i))
-
-        #Create keys for upper half of bracket (normal logic for 64 person bracket, 2 winners + next 2 fastest times move up)
-        else:
-            self._define_ht_sd_keys(pri_heat_pair1, pri_heat_pair2, win_heat, lose_heat)
-            if lose_heat in [202, 204, 206, 208]:
-                self.h_seed_key['Heat {}'.format(lose_heat)].remove('{}/{}-Q{}'.format(pri_heat_pair1, pri_heat_pair2, 6))
-
-    def _add_person_fiftysevenandeight(self):
-        #include a 57th and 58th person in the lower half of the bracket
-        self.h_seed_key['Heat 103'].append(57)
-        self.h_seed_key['Heat 204'].append('103/104-Q6')
-        self.h_seed_key['Heat 304'].append('202/204-Q11')
-        self.h_seed_key['Heat 402'].append('304/308-Q11')
-        self.h_seed_key['Heat 502'].append('402-Q7')
-        self.h_seed_key['Heat 111'].append(58)
-        self.h_seed_key['Heat 204'].append('111/112-Q6')
-        self.h_seed_key['Heat 304'].append('202/204-Q12')
-        self.h_seed_key['Heat 402'].append('304/308-Q12')
-        self.h_seed_key['Heat 502'].append('402-Q8')
-
-    def _assign_ht_sd_keys_fixtysix(self):
-        for pri_heats, wn_ls_heats in self.bef_aft_ht_pairs:
-            pri_heat1 = pri_heats[0]
-            pri_heat2 = pri_heats[1]
-            win_ht = wn_ls_heats[0]
-            lose_ht = wn_ls_heats[1]
-            self._define_ht_sd_keys_fiftysix(pri_heat1, pri_heat2, win_ht, lose_ht)
-
     def _assign_flip_sd_ht_keys(self):
         self.sd_h_key = {val:key for key, value in self.h_seed_key.iteritems() for i, val in enumerate(value)}
 
-    def prepare_sd_h_keys(self, alter_for_fiftysix = False, include_fiftysevenandeight=False):
+    def prepare_sd_h_keys(self):
 
-        if alter_for_fiftysix == True and include_fiftysevenandeight == True:
-            self._assign_ht_sd_keys_fixtysix()
-            self._add_person_fiftysevenandeight()
-            self._assign_flip_sd_ht_keys()
-        elif alter_for_fiftysix == True and include_fiftysevenandeight == False:
-            self._assign_ht_sd_keys_fixtysix()
-            self._assign_flip_sd_ht_keys()
-        else:
-            self._assign_ht_sd_keys()
-            self._assign_flip_sd_ht_keys()
+        self._assign_ht_sd_keys()
+        self._assign_flip_sd_ht_keys()
 
 
     def create_bracket(self):
@@ -194,53 +172,10 @@ class SART(object):
         for ht_pair1, ht_pair2 in self.bef_aft_ht_pairs:
             ht1 = ht_pair1[0]
             ht2 = ht_pair1[1]
-            if ht1 < (rnd * 100 + 100) and ht1 > ((rnd - 1) * 100 + 100):
-                temp_df1 = results_df[(results_df['Heat'] == ht1)].sort_values('Time')
-                temp_df1.reset_index(drop=True, inplace=True)
-                temp_df2 = results_df[(results_df['Heat'] == ht2)].sort_values('Time')
-                temp_df2.reset_index(drop=True, inplace=True)
-
-                tie_status = self._check_heats_for_ties(temp_df1, temp_df2, ht1, ht2)
-                print (tie_status)
-
-                if tie_status != 'No Ties, proceeding with next heat assignments!':
-                    break
-
-                for colnm in person_info:
-                    ht_win1 = temp_df1[colnm][temp_df1['Time'] == temp_df1['Time'].min()].item()
-                    self.bracket_df.loc['W{}'.format(ht1),[colnm]] = ht_win1
-                    ht_win2 = temp_df2[colnm][temp_df2['Time'] == temp_df2['Time'].min()].item()
-                    self.bracket_df.loc['W{}'.format(ht2),[colnm]] = ht_win2
-
-                temp_df1.drop(0, inplace=True)
-                temp_df2.drop(0, inplace=True)
-                temp_dftot = pd.concat([temp_df1, temp_df2]).sort_values('Time')
-                temp_dftot.reset_index(drop=True, inplace=True)
-
-                for i, row in enumerate(temp_dftot.values):
-                    for j, colnm in enumerate(person_info):
-                        self.bracket_df.loc['{}/{}-Q{}'.format(ht1, ht2, i+1),[colnm]] = row[j]
-
-    def nxt_ht_assigns_fiftysix(self, results_df, rnd, person_info=['Surname', 'First_name', 'Time']):
-        '''define inputs, how function works'''
-        for ht_pair1, ht_pair2 in self.bef_aft_ht_pairs:
-            ht1 = ht_pair1[0]
-            ht2 = ht_pair1[1]
-            if ht1 < (rnd * 100 + 100) and ht1 > ((rnd - 1) * 100 + 100) and (ht1 in self.six_person_heats_R4 or ht2 in self.six_person_heats_R4):
+            if ht1 < (rnd * 100 + 100) and ht1 > ((rnd - 1) * 100 + 100) and (ht1 in self.nine_person_heat_R4 or ht2 in self.nine_person_heat_R4):
                 print('Processing Heat Pair {}, {} for R4 to R5 Unique Heats'.format(ht1,ht2))
                 temp_df1 = results_df[(results_df['Heat'] == ht1)].sort_values('Time')
                 temp_df1.reset_index(drop=True, inplace=True)
-                #temp_df2 = results_df[(results_df['Heat'] == ht2)].sort_values('Time')
-                #temp_df2.reset_index(drop=True, inplace=True)
-
-                #tie_status = self._check_heats_for_ties(temp_df1, temp_df2, ht1, ht2)
-                #print (tie_status)
-
-                #if tie_status != 'No Ties, proceeding with next heat assignments!':
-                #    break
-
-                #temp_dftot = pd.concat([temp_df1, temp_df2]).sort_values('Time')
-                #temp_dftot.reset_index(drop=True, inplace=True)
 
                 for i, row in enumerate(temp_df1.values):
                     for j, colnm in enumerate(person_info):
@@ -317,7 +252,7 @@ class SART(object):
                         lambda row: (datetime.strptime(row[2],'%H:%M:%S')
                         - time_zero
                         + datetime.strptime(r4_results[(r4_results['First_name'] == row[0]) &
-                        (r4_results['Surname'] == row[1])]['Time'].values[0], '%H:%M:%S')).time().strftime("%H:%M:%S") if row[3] in [508, 506, 504, 502] else None, axis=1)
+                        (r4_results['Surname'] == row[1])]['Time'].values[0], '%H:%M:%S')).time().strftime("%H:%M:%S") if row[3] in [504, 502] else None, axis=1)
 
         r5_results['Time_Official'] = r5_results[['Time', 'SumTime']].apply(
                             lambda row: row[1] if row[1] > 0 else row[0], axis=1)
@@ -350,9 +285,9 @@ class SART(object):
         r5_results = self._calc_final_combo_score(r4_results, r5_results)
 
         for heat in xrange(516, 500, -1):
-            if heat in [507, 505, 503, 501]:
+            if heat in [503, 501]:
                 pass
-            elif heat in [508, 506, 504, 502]:
+            elif heat in [504, 502]:
                 df = r5_results[r5_results['Heat'] == heat]
                 info_list.append('Heat {}'.format(heat))
                 info_list.append('\n')
